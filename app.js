@@ -12,7 +12,8 @@ let auth = require('./controllers/auth');
 
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb://localhost/Travel', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://netoguedes:spike123@mycluster.kubjail.mongodb.net/Travel',
+{useNewUrlParser: true, useUnifiedTopology: true});
 app.use(express.json());
 let imageStorage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'public/images'),
