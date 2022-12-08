@@ -12,7 +12,7 @@ let auth = require('./controllers/auth');
 
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb+srv://netoguedes:spike123@mycluster.kubjail.mongodb.net/Travel',
+mongoose.connect('mongodb+srv://netoguedes:spike123@mycluster.kubjail.mongodb.net/Travel?authMechanism=SCRAM-SHA-1',
 {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(express.json());
 let imageStorage = multer.diskStorage({
