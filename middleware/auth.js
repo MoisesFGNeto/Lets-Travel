@@ -6,7 +6,7 @@ function checkAuth(req, resp, next) {
         next();
     } else {
         resp.status(400);
-        resp.send('Not authoried');
+        resp.send('Not authorized');
     }
 }
 

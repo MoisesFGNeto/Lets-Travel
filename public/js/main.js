@@ -30,6 +30,14 @@ document.addEventListener('DOMContentLoaded', async function() {
 callMeForm.addEventListener('submit', function(e) {
     e.preventDefault();
     let phoneInput = callMeForm.querySelector('input');
+    if (phoneInput.value.trim() === '') {
+        alert('Please enter a phone number.');
+        return;
+    }
+    if (isNaN(phoneInput.value)) {
+        alert('Please enter only numbers for the phone number.');
+        return;
+    }
     fetch('/callback-requests', {
         method: 'POST',
         headers: {
@@ -45,6 +53,16 @@ let emailRequestForm = document.querySelector('.email-request-form');
 
 emailRequestForm.addEventListener('submit', function(e) {
     e.preventDefault();
+
+    const nameInput = document.querySelector('#name');
+    const emailInput = document.querySelector('#email-contact');
+    const messageInput = document.querySelector('#message');
+
+    if(!nameInput.value || !emailInput.value || !messageInput.value) {
+        alert('Please fill in all the required fields.');
+        return;
+    }
+
     fetch('/emails', {
         method: 'POST',
         headers: {
@@ -52,8 +70,8 @@ emailRequestForm.addEventListener('submit', function(e) {
         },
         body: JSON.stringify({
             name: document.querySelector('#name').value,
-            email: document.querySelector('#email').value,
+            email: document.querySelector('#email-contact').value,
             text: document.querySelector('#message').value
         })
-    }).then((resp) => resp.text()).then((data) => console.log(data));
+    }).then((resp) => resp.text()).then(() => alert('Your message has been sent, Thank You !'));
 })

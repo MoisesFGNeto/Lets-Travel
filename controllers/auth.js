@@ -1,5 +1,6 @@
 let jwt = require('jsonwebtoken');
-let secret = 'udhauhdauhduahd';
+require("dotenv").config();
+let secret = process.env.JWT_SECRET;
 
 function generateToken(user) {
     let payload = {
@@ -10,7 +11,12 @@ function generateToken(user) {
   }
 
 function checkToken(token) {
-    return jwt.verify(token, secret);
+  try {
+    let result = jwt.verify(token, secret);
+    return result;
+  } catch(error) {
+      return false;
+  }
   }
 
 module.exports = {generateToken, checkToken};

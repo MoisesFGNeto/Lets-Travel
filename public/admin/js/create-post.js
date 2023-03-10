@@ -7,6 +7,14 @@ let imageFile = document.querySelector('#image-file');
 
 createForm.addEventListener('submit', function(e) {
     e.preventDefault();
+    if (!imageFile.files.length) {
+        alert('Please select an image.');
+        return;
+    }
+    if (title.value.trim() === '' || country.value.trim() === '' || text.value.trim() === ''){
+        alert('Please fill all required fields');
+        return;
+    }
     let createText = text.value;
     let createDrescription;
     if(createText.indexOf('.') === -1){
@@ -21,7 +29,7 @@ createForm.addEventListener('submit', function(e) {
     data.append('text', createText);
     data.append('description', createDrescription);
     data.append('imageFile', imageFile.files[0]);
-    fetch('/posts', {
+    fetch('/posts/', {
         method: 'POST',
         body: data
     }).then ((response) => response.text()).then((data) => window.history.go());

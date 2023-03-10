@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 let mongoose = require('mongoose');
+require("dotenv").config();
 let multer = require('multer');
 let cookieParser = require('cookie-parser');
 let callbackRequestsRouter = require('./routes/callback-requests.route');
@@ -12,8 +13,7 @@ let auth = require('./controllers/auth');
 
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb+srv://netoguedes:spike123@mycluster.kubjail.mongodb.net/Travel?authMechanism=SCRAM-SHA-1',
-{useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DB,{useNewUrlParser: true, useUnifiedTopology: true});
 app.use(express.json());
 let imageStorage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'public/images'),
@@ -47,7 +47,6 @@ app.get('/admin', (req, resp) => {
     } else {
         resp.redirect('/login');
     }
-    
 })
 
 app.get('/login', (req, resp) => {
@@ -58,6 +57,11 @@ app.get('/login', (req, resp) => {
         resp.render('login');
     }
 })
+
+app.get('/resetPassword', async (req, res) => {
+    res.render('reset-password.ejs');
+});
+
 
 let port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening ${port}...`));

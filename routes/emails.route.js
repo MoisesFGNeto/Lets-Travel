@@ -18,7 +18,7 @@ router.post('/', async (req, resp) => {
         date: new Date()
     });
     await newEmail.save();
-    resp.send('Accepted');
+    resp.json({ message: 'Your message has been sent' });
 });
 
 router.delete('/:id', authMiddleware, async (req, resp) => {
