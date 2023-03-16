@@ -10,10 +10,9 @@ const {
   } = require("../controllers/auth.controller");
 
 router.post('/login',  async (req, resp) => {
-    let email = req.body.email;
-    let password = req.body.password;
-
-    let users = await User.find().where({email: email});
+    const{email, password} = req.body;
+    const users = await User.find().where({email: email});
+    
     if(users.length > 0) {
         let comparisonResult = await bcrypt.compare(password, users[0].password);
         if(comparisonResult) {
@@ -31,24 +30,25 @@ router.post('/login',  async (req, resp) => {
     }
 })
 
-router.post('/register',  async (req, resp) => {
-    let name = req.body.name;
-    let email = req.body.email;
-    let password = req.body.password;
-    let users = await User.find().where({email: email});
-    if(users.length === 0) {
-        let encryptedPass = await bcrypt.hash(password, 12);
-        let newUser = new User ({ 
-            name,
-            email, 
-            password: encryptedPass
-        });
-        await newUser.save();
-        resp.send({message: 'User successfully registered'});
-    } else {
-        resp.send({message: 'Rejected'});
+router.post('/register', async (req, res) => {
+    const { name, email, password } = req.body;
+    const userExists = await User.findOne({ email });
+  
+    if (userExists) {
+      return res.status(400).json({ message: 'Email already registered' });
     }
-})
+  
+    const encryptedPassword = await bcrypt.hash(password, 12);
+    const newUser = new User({
+      name,
+      email,
+      password: encryptedPassword,
+    });
+  
+    await newUser.save();
+  
+    res.status(201).json({ message: 'User successfully registered' });
+  });
 
 router.post("/requestPasswordReset", requestPasswordResetController); 
 router.post("/resetPassword", resetPasswordController);

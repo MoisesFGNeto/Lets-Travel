@@ -1,22 +1,5 @@
 let signInForm = document.querySelector('.sign-in-form');
 let registerForm = document.querySelector('.register-form');
-const forgottenLink = document.querySelector('.forgotten-link');
-const forgottenTab = document.querySelector('#forgotten-password-tab-pane');
-const forgotPassForm = document.querySelector('.forgotten-password-form');
-const resetPasswordForm = document.querySelector('.reset-password-form');
-const resetPasswordTab = document.querySelector('.reset-password-tab');
-
-
-//Display hidden tab when click in the link 'forgot email?'
-
-forgottenLink.addEventListener('click', (event) => {
-    event.preventDefault(); 
-    forgottenTab.classList.add('show', 'active');
-    document.querySelector('.fogotten-password-tab').classList.remove('d-none');
-    document.querySelector('#sign-in-tab').classList.add('d-none');
-    document.querySelector('#register-tab').classList.add('d-none');
-    document.querySelector('.sign-in-form').classList.add('d-none');
-  });
 
   // Sign-in form
 
@@ -76,27 +59,6 @@ registerForm.addEventListener('submit', function(e) {
         alert(data);
         window.location.reload();
     });  
-})
-
-//Request Reset Password - Setting endpoint
-
-forgotPassForm.addEventListener('submit', function(e) { 
-    e.preventDefault();
-    const email = document.querySelector('.forgotten-password-input').value;
-    if(email === ''){
-        alert('Please enter your email');
-        return
-    } 
-    fetch('/users/requestPasswordReset', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify({email})
-    }).then((resp) => resp.text()).then((data) => {
-        alert(data);
-        window.location.reload();
-    });
 })
 
 

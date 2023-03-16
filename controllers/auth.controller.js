@@ -7,11 +7,16 @@ const {
 
 const requestPasswordResetController = async (req, res, next) => {
 const email = req.body.email;
-await requestPasswordReset(email);
-
-const alertMessage = "We have sent a reset password link to your email. Please check your spam folder.";
-const alertScript = `alert('${alertMessage}')`;
-res.send(`${alertScript}`);
+const result = await requestPasswordReset(email);
+if (result.error){
+  const alertMessage = result.error;
+  const alertScript = `Alert ('${alertMessage}')`;
+  res.send(`${alertScript}`);
+} else{
+  const alertMessage = "We have sent a reset password link to your email. Please check your spam folder.";
+  const alertScript = `Alert ('${alertMessage}')`;
+  res.send(`${alertScript}`);
+}
 };
 
 // Reset password

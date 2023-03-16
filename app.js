@@ -10,7 +10,6 @@ let emailRouter = require('./routes/emails.route');
 let userRouter = require('./routes/users.route');
 let Post = require('./models/post.model').Post;
 let auth = require('./controllers/auth');
-
 app.set('view engine', 'ejs');
 
 mongoose.connect(process.env.DB,{useNewUrlParser: true, useUnifiedTopology: true});
@@ -58,9 +57,19 @@ app.get('/login', (req, resp) => {
     }
 })
 
-app.get('/resetPassword', async (req, res) => {
-    res.render('reset-password.ejs');
-});
+app.get('/requestPasswordReset', (req, res) => {
+    res.render('requestPassword');
+  });
+
+
+app.get('/resetPassword', (req, res) => {
+    const { token, id } = req.query; // extract token and id from query string
+    // render the resetPassword.ejs template and pass in token and id as variables
+    res.render('resetPassword', {
+        token,
+        id
+    });
+  });
 
 
 let port = process.env.PORT || 3000;
