@@ -22,7 +22,7 @@ signInForm.addEventListener('submit', function(e) {
         if(redirectURL) {
             window.location.href = redirectURL;
         } else {
-            alert('Your password and email do not match. Please try again.')
+            alert('Your password and email do not match. Please try again.');
         }
     });
 })

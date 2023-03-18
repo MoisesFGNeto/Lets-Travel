@@ -40,12 +40,12 @@ const requestPasswordReset = async (email) => {
 
 const resetPassword = async (userId, token, password) => {
   let passwordResetToken = await Token.findOne({ userId });
+  console.log(token);
+  console.log(userId);
 
   if (!passwordResetToken) {
     throw new Error("Invalid or expired password reset token");
   }
-
-  console.log(passwordResetToken.token, token);
 
   const isValid = await bcrypt.compare(token, passwordResetToken.token);
 
