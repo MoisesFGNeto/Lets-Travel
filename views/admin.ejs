@@ -11,7 +11,7 @@
     />
     <link rel="stylesheet" href="/CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="/CSS/all.min.css" />
-    <link rel="stylesheet" href="../public/CSS/style.css" />
+    <link rel="stylesheet" href="/CSS/style.css" />
   </head>
   <body>
     <header class="mb-5">
@@ -23,36 +23,30 @@
               <label class="form-check-label ms-1" for="lightSwitch">
                 <i class="fa-regular fa-lightbulb"></i>
               </label>
-              <input class="form-check-input" type="checkbox" id="lightSwitch"/>
+              <input class="form-check-input" type="checkbox" id="lightSwitch" role="switch" onclick="setDarkMode()"/>
             </div>
           </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class=" navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link nav-menu active" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Contacts</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/admin"
+                <a class="nav-link nav-menu" aria-current="page" href="/admin"
                   >Admin Page</a
                 >
               </li>
               <li class="nav-item">
-                <button class="log-out-btn btn btn-outline-secondary">
+                <button class="log-out-btn btn btn-outline-secondary ml-1">
                   Log Out
                 </button>
               </li>
             </ul>
             <form class="d-flex">
-              <input class="form-control me-2" type="tel" placeholder="Phone number" aria-label="Phone number"/>
+              <input class="phone-input form-control me-2" type="tel" placeholder="Phone number" aria-label="Phone number"/>
               <button class="btn btn-outline-primary text-nowrap" type="submit">
                 Call me
               </button>
@@ -61,8 +55,8 @@
         </div>
       </nav>
     </header>
-    <main>
-      <div class="container-fluid shadow p-3 mb-5 bg-body rounded">
+    <main class="main">
+      <div class="admin-box container-fluid shadow p-3 mb-5 bg-body rounded">
         <h1 class="text-center admin">Admin Page</h1>
         <hr />
         <div class="d-flex align-items-start flex-wrap flex-lg-nowrap">
@@ -84,20 +78,20 @@
             </button>
           </div>
           <div class="tab-content border rounded col-12 col-lg-9 p-3" id="v-pills-tabContent">
-            <div class="tab-pane table-responsive fade show active" id="v-pills-articles" role="tabpanel" aria-labelledby="v-pills-articles-tab">
+            <div class=" tab-pane table-responsive fade show active" id="v-pills-articles" role="tabpanel" aria-labelledby="v-pills-articles-tab">
               <button class="add-post btn btn-primary mb-3">Add post</button>
-              <table class="articles-list table table-striped">
-                <tbody></tbody>
+              <table class="articles-list table">
+                <tbody class="white-article"></tbody>
               </table>
             </div>
             <div class="tab-pane table-responsive fade" id="v-pills-mails" role="tabpanel" aria-labelledby="v-pills-mails-tab">
-              <table class="table table-striped">
-                <tbody></tbody>
+              <table class="table">
+                <tbody class="white-article"></tbody>
               </table>
             </div>
             <div class="tab-pane table-responsive fade" id="v-pills-requests" role="tabpanel" aria-labelledby="v-pills-requests-tab">
-              <table class="table table-striped">
-                <tbody></tbody>
+              <table class="table">
+                <tbody class="white-article"></tbody>
               </table>
             </div>
             <div class="tab-pane table-responsive fade" id="v-pills-add-post" role="tabpanel" aria-labelledby="v-pills-add-post">
@@ -126,6 +120,7 @@
                 <button type="submit" class="btn btn-primary">
                   Creat post
                 </button>
+                <a href="/admin" class="btn btn-primary" id="cancel-btn">Cancel</a>
               </form>
             </div>
             <!-- Update form -->
@@ -143,7 +138,7 @@
                 <button type="submit" class="btn btn-primary">
                   Update post
                 </button>
-                <a href="#" class="btn btn-primary" id="cancel-btn">Cancel</a>
+                <a href="/admin" class="btn btn-primary" id="cancel-btn">Cancel</a>
               </form>
             </div>
           </div>

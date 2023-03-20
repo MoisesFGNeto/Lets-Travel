@@ -33,12 +33,12 @@ async function addPost(){
     posts.forEach((post) => {
         let postHTML = `
         <tr>
-             <td>${i++}<input class="id" type="hidden" value="${post.id}"></td>
-             <td class="title">${post.title}</td>
-             <td class="date">${post.date}</td>
-             <td class="country">${post.country}</td>
-             <td><button class="edit-btn btn btn-link p-0 text-decoration-none">Edit</button></td>
-             <td><button class="remove-btn btn btn-link p-0 text-decoration-none">X</button></td>
+            <td>${i++}<input class="id" type="hidden" value="${post.id}"></td>
+            <td class="title">${post.title}</td>
+            <td class="date">${post.date}</td>
+            <td class="country">${post.country}</td>
+            <td><button class="edit-btn btn btn-link p-0 text-decoration-none">Edit</button></td>
+            <td><button class="remove-btn btn btn-link p-0 text-decoration-none">X</button></td>
         </tr>
          `;
         articles.insertAdjacentHTML('beforeend', postHTML);
@@ -116,3 +116,45 @@ logOutBtn.addEventListener('click', function () {
     document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
     window.location.href = '/';
 })
+
+function setDarkMode() {
+    let isDark = document.body.classList.toggle("darkmode");
+    let navbar = document.querySelector(".navbar");
+    let callmeForm = document.querySelector(".phone-input");
+    let navMenu = document.querySelectorAll(".nav-menu");
+    let logo = document.querySelector(".navbar-brand");
+    let adminBox = document.querySelector(".admin-box");
+    let articles = document.querySelector('.articles-list tbody');
+
+    if (isDark) {
+        window.localStorage.setItem("theme", "dark");
+        document.getElementById("lightSwitch").setAttribute("checked", "checked");
+        navbar.classList.remove("bg-light");
+        callmeForm.classList.add("bg-dark", "text-white");
+        navMenu.forEach((menu) => menu.classList.add("text-white"));
+        logo.classList.add("text-white");
+        adminBox.classList.remove("bg-body");
+        articles.classList.add("text-white");
+        
+        
+    } else {
+      localStorage.setItem("theme", "light");
+      navbar.classList.add("bg-light");
+      navbar.classList.remove("font-white");
+      callmeForm.classList.remove("bg-dark", "text-white");
+      navMenu.forEach((menu) => menu.classList.remove("text-white"));
+      logo.classList.remove("text-white");
+      adminBox.classList.add("bg-body");
+      articles.classList.remove("text-white");
+    
+    }
+}
+
+function initializeDarkMode() {
+  const theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    setDarkMode();
+  }
+}
+
+initializeDarkMode();

@@ -23,5 +23,6 @@ resetForm.addEventListener('submit', function(e) {
         body:JSON.stringify({password, token, userId})
     }).then((resp) => resp.text()).then((data) => {
         alert(data);
+        window.location.href = '/login';
     });
 })

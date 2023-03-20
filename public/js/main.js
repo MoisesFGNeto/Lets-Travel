@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     articles.innerHTML = '';
     posts.forEach((post) => {
         let postHTML = `
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="div-card col-12 col-md-6 col-lg-4">
                 <div class="card">
                     <img src="${post.imageURL}" class="card-img-top" alt="${post.title}">
                     <div class="card-body">
@@ -75,3 +75,46 @@ emailRequestForm.addEventListener('submit', function(e) {
         })
     }).then((resp) => resp.text()).then(() => alert('Your message has been sent, Thank You !'));
 })
+
+
+// Dark Mode
+
+function setDarkMode() {
+    let isDark = document.body.classList.toggle("darkmode");
+    let navbar = document.querySelector(".navbar");
+    let footer = document.querySelector(".footer");
+    let callmeForm = document.querySelector(".phone-input");
+    let landmarks = document.querySelectorAll(".card");
+    let navLink = document.querySelectorAll(".nav-link");
+
+    if (isDark) {
+        window.localStorage.setItem("theme", "dark");
+      document.getElementById("lightSwitch").setAttribute("checked", "checked");
+      for (let i = 0; i < landmarks.length; i++) {
+        landmarks[i].classList.add("darkmode");
+      }
+      navbar.classList.remove("bg-light");
+      footer.classList.remove("bg-light");
+      callmeForm.classList.add("bg-dark", "text-white");
+      navLink.forEach((menu) => menu.classList.add("text-white"));
+
+    } else {
+      localStorage.setItem("theme", "light");
+      for (let i = 0; i < landmarks.length; i++) {
+        landmarks[i].classList.remove("darkmode");
+      }
+      navbar.classList.add("bg-light");
+      footer.classList.add("bg-light");
+      callmeForm.classList.remove("bg-dark", "text-white");
+      navLink.forEach((menu) => menu.classList.remove("text-white"));
+    }
+}
+
+function initializeDarkMode() {
+  const theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    setDarkMode();
+  }
+}
+
+initializeDarkMode();
