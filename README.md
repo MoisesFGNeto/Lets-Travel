@@ -1,2 +1,4 @@
 # Lets-Travel
-This is a travel blog. Dynamic website, where the user after logged in can manage their posts, inbound emails and call requests.
+
+This is a travel blog. My focus on this project was to implement a security authentication login and password recovery. 
+
