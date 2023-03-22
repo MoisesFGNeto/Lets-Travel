@@ -124,7 +124,8 @@ function setDarkMode() {
     let navMenu = document.querySelectorAll(".nav-menu");
     let logo = document.querySelector(".navbar-brand");
     let adminBox = document.querySelector(".admin-box");
-    let articles = document.querySelector('.articles-list tbody');
+    let articles = document.querySelector('.table tbody');
+    let tables = document.querySelectorAll(".table");
 
     if (isDark) {
         window.localStorage.setItem("theme", "dark");
@@ -134,21 +135,21 @@ function setDarkMode() {
         navMenu.forEach((menu) => menu.classList.add("text-white"));
         logo.classList.add("text-white");
         adminBox.classList.remove("bg-body");
-        articles.classList.add("text-white");
-        
-        
-    } else {
-      localStorage.setItem("theme", "light");
-      navbar.classList.add("bg-light");
-      navbar.classList.remove("font-white");
-      callmeForm.classList.remove("bg-dark", "text-white");
-      navMenu.forEach((menu) => menu.classList.remove("text-white"));
-      logo.classList.remove("text-white");
-      adminBox.classList.add("bg-body");
-      articles.classList.remove("text-white");
-    
+        articles.classList.add("table-dark");
+        tables.forEach((table) => table.classList.add("table-dark"));
+        }
+    else {
+        localStorage.setItem("theme", "light");
+        navbar.classList.add("bg-light");
+        navbar.classList.remove("font-white");
+        callmeForm.classList.remove("bg-dark", "text-white");
+        navMenu.forEach((menu) => menu.classList.remove("text-white"));
+        logo.classList.remove("text-white");
+        adminBox.classList.add("bg-body");
+        articles.classList.remove("table-dark");
+        tables.forEach((table) => table.classList.remove("table-dark"));
+      }
     }
-}
 
 function initializeDarkMode() {
   const theme = localStorage.getItem("theme");

@@ -7,9 +7,10 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="/CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="/CSS/all.min.css" />
+    <link rel="stylesheet" href="/CSS/style.css" />
   </head>
   <body>
-    <header class="mb-5">
+    <header class="mb-5 mt-2">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
           <a class="navbar-brand" href="/">Let's travel</a>
@@ -18,7 +19,7 @@
               <label class="form-check-label" for="lightSwitch">
                 <i class="fa-regular fa-lightbulb"></i>
               </label>
-              <input class="form-check-input" type="checkbox" id="lightSwitch"/>
+              <input class="form-check-input" type="checkbox" id="lightSwitch" role="switch" onclick="setDarkMode()"/>
             </div>
           </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,15 +27,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <button class="btn btn-outline-secondary">Log Out</button>
-              </li>
             </ul>
             <form class="d-flex">
-              <input class="form-control me-2" type="tel" placeholder="Phone number" aria-label="Phone number"/>
+              <input class="form-control phone-input me-2" type="tel" placeholder="Phone number" aria-label="Phone number"/>
               <button class="btn btn-outline-primary text-nowrap" type="submit">
                 Call me
               </button>
@@ -46,7 +41,7 @@
     <main>
       <div class="container">
         <div class="row">
-          <div class="col-6 offset-3 shadow-lg p-3 mb-5 bg-body rounded">
+          <div class="col-8 offset-2 box-body shadow-lg p-3 mb-5 bg-body rounded">
             <h1 class="text-center">Admin Page</h1>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
@@ -62,38 +57,39 @@
             </ul>
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="sign-in-tab-pane" role="tabpanel" aria-labelledby="sign-in-tab" tabindex="0">
-                <form class="sign-in-form">
+                <form class="sign-in-form text-center mt-3">
                   <div class="mb-3 mt-3">
                     <label for="sign-in-email" class="mb-1">Email address</label>
-                    <input class="form-control" type="email" id="sign-in-email" placeholder="Enter email"/>
+                    <input class="form-control input-password w-50 m-auto text-center" type="email" id="sign-in-email" placeholder="Enter email"/>
                   </div>
                   <div class="mb-3">
                     <label for="sign-in-password" class="mb-1">Password</label>
-                    <input class="form-control" type="password" id="sign-in-password" placeholder="Password"/>
+                    <input class="form-control input-password w-50 m-auto text-center" type="password" id="sign-in-password" placeholder="Password"/>
                   </div>
                   <button class="btn btn-primary">Sign in</button>
-                  <a class="fs-6 float-end text-decoration-none forgotten-link"href="/requestPasswordReset">Forgot password?</a>
+                  <hr>
+                  <a class="fs-6 text-decoration-none forgotten-link"href="/requestPasswordReset">Forgot password?</a>
                 </form>
               </div>
               <div class="tab-pane fade" id="register-tab-pane" role="tabpanel" aria-labelledby="register-tab" tabindex="1">
-                <form class="register-form">
+                <form class="register-form text-center">
                   <div class="mb-3 mt-3">
-                    <label for="sign-in-name" class="mb-1">Name</label>
-                    <input class="form-control" type="text" id="sign-in-name" placeholder="Enter your name"/>
+                    <label for="sign-in-name" class="mb-1 field-title">Name</label>
+                    <input class="form-control input-password w-50 m-auto text-center" type="text" id="sign-in-name" placeholder="Enter your name"/>
                   </div>
                   <div class="mb-3 mt-3">
-                    <label for="register-email" class="mb-1">Email address</label>
-                    <input class="form-control" type="email" id="register-email" placeholder="Enter email"/>
+                    <label for="register-email" class="mb-1 field-title">Email address</label>
+                    <input class="form-control input-password w-50 m-auto text-center" type="email" id="register-email" placeholder="Enter email"/>
                   </div>
                   <div class="mb-3">
-                    <label for="register-password" class="mb-1">Password</label>
-                    <input class="form-control" type="password" id="register-password" placeholder="Password"/>
+                    <label for="register-password" class="mb-1 field-title">Password</label>
+                    <input class="form-control input-password w-50 m-auto text-center" type="password" id="register-password" placeholder="Password"/>
                   </div>
                   <div class="mb-3">
-                    <label for="register-re-enter-password" class="mb-1">Re-enter password</label>
-                    <input class="form-control" type="password" id="register-re-enter-password" placeholder="Re-enter password"/>
+                    <label for="register-re-enter-password" class="mb-1 field-title">Re-enter password</label>
+                    <input class="form-control input-password w-50 m-auto text-center" type="password" id="register-re-enter-password" placeholder="Re-enter password"/>
                   </div>
-                  <button class="btn btn-primary">Register</button>
+                  <button class="btn btn-primary mt-3">Register</button>
                 </form>
               </div>
             </div>

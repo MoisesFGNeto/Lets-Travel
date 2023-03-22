@@ -61,4 +61,40 @@ registerForm.addEventListener('submit', function(e) {
     });  
 })
 
+// Dark Mode
 
+function setDarkMode() {
+    let isDark = document.body.classList.toggle("darkmode");
+    let navbar = document.querySelector(".navbar");
+    let logo = document.querySelector(".navbar-brand")
+    let callmeForm = document.querySelector(".phone-input");
+    let boxBody = document.querySelector(".box-body");
+    let passInput = document.querySelectorAll(".input-password");
+    
+    if (isDark) {
+        window.localStorage.setItem("theme", "dark");
+        document.getElementById("lightSwitch").setAttribute("checked", "checked");
+        navbar.classList.remove("bg-light");
+        callmeForm.classList.add("bg-dark", "text-white");
+        boxBody.classList.remove("bg-body");
+        logo.classList.add("text-white");
+        passInput.forEach((input) => input.classList.add("bg-dark", "text-white"));
+        } 
+    else {
+        localStorage.setItem("theme", "light");
+        navbar.classList.add("bg-light");
+        callmeForm.classList.remove("bg-dark", "text-white");
+        boxBody.classList.add("bg-body");
+        logo.classList.remove("text-white");
+        passInput.forEach((input) => input.classList.remove("bg-dark", "text-white"));
+    }
+}
+
+function initializeDarkMode() {
+  const theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    setDarkMode();
+  }
+}
+
+initializeDarkMode();

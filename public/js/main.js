@@ -82,31 +82,27 @@ emailRequestForm.addEventListener('submit', function(e) {
 function setDarkMode() {
     let isDark = document.body.classList.toggle("darkmode");
     let navbar = document.querySelector(".navbar");
-    let footer = document.querySelector(".footer");
     let callmeForm = document.querySelector(".phone-input");
     let landmarks = document.querySelectorAll(".card");
+    let footer = document.querySelector(".footer");
     let navLink = document.querySelectorAll(".nav-link");
 
     if (isDark) {
         window.localStorage.setItem("theme", "dark");
-      document.getElementById("lightSwitch").setAttribute("checked", "checked");
-      for (let i = 0; i < landmarks.length; i++) {
-        landmarks[i].classList.add("darkmode");
-      }
-      navbar.classList.remove("bg-light");
-      footer.classList.remove("bg-light");
-      callmeForm.classList.add("bg-dark", "text-white");
-      navLink.forEach((menu) => menu.classList.add("text-white"));
-
-    } else {
-      localStorage.setItem("theme", "light");
-      for (let i = 0; i < landmarks.length; i++) {
-        landmarks[i].classList.remove("darkmode");
-      }
-      navbar.classList.add("bg-light");
-      footer.classList.add("bg-light");
-      callmeForm.classList.remove("bg-dark", "text-white");
-      navLink.forEach((menu) => menu.classList.remove("text-white"));
+        document.getElementById("lightSwitch").setAttribute("checked", "checked");
+        navbar.classList.remove("bg-light");
+        callmeForm.classList.add("bg-dark", "text-white");
+        landmarks.forEach((card) => card.classList.add("darkmode"));
+        footer.classList.remove("bg-light");
+        navLink.forEach((menu) => menu.classList.add("text-white"));
+        } 
+    else {
+        localStorage.setItem("theme", "light");
+        navbar.classList.add("bg-light");
+        callmeForm.classList.remove("bg-dark", "text-white");
+        landmarks.forEach((card) => card.classList.remove("darkmode"));
+        footer.classList.add("bg-light");
+        navLink.forEach((menu) => menu.classList.remove("text-white"));
     }
 }
 
