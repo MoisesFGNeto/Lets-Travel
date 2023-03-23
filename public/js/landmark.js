@@ -1,26 +1,3 @@
-const forgotPassForm = document.querySelector('.forgotten-password-form');
-
-forgotPassForm.addEventListener('submit', function(e) { 
-    e.preventDefault();
-    const email = document.querySelector('.forgotten-password-input').value;
-    if(email === ''){
-        alert('Please enter your email');
-        return
-    } 
-
-    fetch('/users/requestPasswordReset', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify({email: email})
-    }).then((resp) => resp.text()).then((data) => {
-        console.log(data);
-        alert(data);
-        window.location.reload();
-    });
-})
-
 let callMeForm = document.querySelector('.call-me-form');
 
 callMeForm.addEventListener('submit', function(e) {
@@ -51,33 +28,38 @@ callMeForm.addEventListener('submit', function(e) {
 function setDarkMode() {
     let isDark = document.body.classList.toggle("bg-dark");
     let navbar = document.querySelector(".navbar");
-    let adminHeader = document.querySelector(".admin-header");
-    let logo = document.querySelector(".navbar-brand")
+    let logo = document.querySelector(".navbar-brand");
+    let navLink = document.querySelectorAll(".nav-item");
     let callmeForm = document.querySelector(".phone-input");
-    let boxBody = document.querySelector(".box-body");
-    let email = document.querySelector(".email-title");
-    let emailInput = document.querySelector(".forgotten-password-input");
-    
+    let landmarks = document.querySelectorAll(".card");
+    let landmarkText = document.querySelectorAll(".card-body");
+    let footer = document.querySelector(".footer");
+    let boxContainer = document.querySelector(".box-body");
+
     if (isDark) {
         window.localStorage.setItem("theme", "dark");
         document.getElementById("lightSwitch").setAttribute("checked", "checked");
-        navbar.classList.remove("bg-light", "navbar-light");
-        adminHeader.classList.add("text-white");
-        callmeForm.classList.add("bg-dark", "text-white");
-        boxBody.classList.remove("bg-body");
+        navbar.classList.remove("bg-light");
         logo.classList.add("text-white");
-        email.classList.add("text-white");
-        emailInput.classList.add("bg-dark", "text-white");
+        navLink.classList.add("text-white");
+        callmeForm.classList.add("bg-dark", "text-white");
+        landmarks.forEach((card) => card.classList.add("darkmode"));
+        landmarkText.forEach((card) => card.classList.add("text-white"));
+        footer.classList.remove("bg-light");
+        boxContainer.classList.remove("bg-body");
+        logo.classList.add("text-white");
         } 
     else {
         localStorage.setItem("theme", "light");
-        navbar.classList.add("bg-light", "navbar-light");
-        adminHeader.classList.remove("text-white");
-        callmeForm.classList.remove("bg-dark", "text-white");
-        boxBody.classList.add("bg-body");
+        navbar.classList.add("bg-light");
         logo.classList.remove("text-white");
-        email.classList.remove("text-white");
-        emailInput.classList.remove("bg-dark", "text-white");
+        navLink.classList.remove("text-white");
+        callmeForm.classList.remove("bg-dark", "text-white");
+        landmarks.forEach((card) => card.classList.remove("darkmode"));
+        landmarkText.forEach((card) => card.classList.add("text-white"));
+        footer.classList.add("bg-light");
+        boxContainer.classList.add("bg-body");
+        logo.classList.remove("text-white");
     }
 }
 

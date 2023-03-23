@@ -4,8 +4,6 @@ async function getPosts() {
         .then((data) => data);
 }
 
-let callMeForm = document.querySelector('.call-me-form');
-
 document.addEventListener('DOMContentLoaded', async function() {
     let posts = await getPosts();
     let articles = document.querySelector('.landmarks');
@@ -27,6 +25,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     })
 })
 
+let callMeForm = document.querySelector('.call-me-form');
+
 callMeForm.addEventListener('submit', function(e) {
     e.preventDefault();
     let phoneInput = callMeForm.querySelector('input');
@@ -46,7 +46,10 @@ callMeForm.addEventListener('submit', function(e) {
         body: JSON.stringify({
             phoneNumber: phoneInput.value
         })
-    }).then((resp) => resp.text()).then(() => alert('We will call you back as soon as possible!'));
+    }).then((resp) => resp.text()).then(() => {
+        alert('We will call you back as soon as possible!');
+        location.reload();
+    });
 })
 
 let emailRequestForm = document.querySelector('.email-request-form');
@@ -80,7 +83,7 @@ emailRequestForm.addEventListener('submit', function(e) {
 // Dark Mode
 
 function setDarkMode() {
-    let isDark = document.body.classList.toggle("darkmode");
+    let isDark = document.body.classList.toggle("bg-dark");
     let navbar = document.querySelector(".navbar");
     let callmeForm = document.querySelector(".phone-input");
     let landmarks = document.querySelectorAll(".card");

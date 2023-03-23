@@ -61,6 +61,30 @@ registerForm.addEventListener('submit', function(e) {
     });  
 })
 
+let callMeForm = document.querySelector('.call-me-form');
+
+callMeForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let phoneInput = callMeForm.querySelector('input');
+    if (phoneInput.value.trim() === '') {
+        alert('Please enter a phone number.');
+        return;
+    }
+    if (isNaN(phoneInput.value)) {
+        alert('Please enter only numbers for the phone number.');
+        return;
+    }
+    fetch('/callback-requests', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            phoneNumber: phoneInput.value
+        })
+    }).then((resp) => resp.text()).then(() => alert('We will call you back as soon as possible!'));
+})
+
 // Dark Mode
 
 function setDarkMode() {
