@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     articles.innerHTML = '';
     posts.forEach((post) => {
         let postHTML = `
-            <div class="div-card col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="card">
                     <img src="${post.imageURL}" class="card-img-top" alt="${post.title}">
                     <div class="card-body">
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             </div>
         `;
         articles.insertAdjacentHTML('beforeend', postHTML);
-    })
-})
+    });
+});
 
 let callMeForm = document.querySelector('.call-me-form');
 
@@ -81,31 +81,35 @@ emailRequestForm.addEventListener('submit', function(e) {
 
 
 // Dark Mode
-
+  
 function setDarkMode() {
-    let isDark = document.body.classList.toggle("bg-dark");
+    let isDark = document.body.classList.toggle("darkmode");
     let navbar = document.querySelector(".navbar");
+    let navLink = document.querySelectorAll(".nav-link-1");
     let callmeForm = document.querySelector(".phone-input");
     let landmarks = document.querySelectorAll(".card");
     let footer = document.querySelector(".footer");
-    let navLink = document.querySelectorAll(".nav-link");
-
+    
     if (isDark) {
         window.localStorage.setItem("theme", "dark");
         document.getElementById("lightSwitch").setAttribute("checked", "checked");
         navbar.classList.remove("bg-light");
-        callmeForm.classList.add("bg-dark", "text-white");
-        landmarks.forEach((card) => card.classList.add("darkmode"));
-        footer.classList.remove("bg-light");
         navLink.forEach((menu) => menu.classList.add("text-white"));
+        callmeForm.classList.add("bg-dark", "text-white");
+        landmarks.forEach((card) => {
+            card.classList.add("text-white", "darkmode"); // add the .darkmode class
+        });
+        footer.classList.remove("bg-light");
         } 
     else {
         localStorage.setItem("theme", "light");
         navbar.classList.add("bg-light");
-        callmeForm.classList.remove("bg-dark", "text-white");
-        landmarks.forEach((card) => card.classList.remove("darkmode"));
-        footer.classList.add("bg-light");
         navLink.forEach((menu) => menu.classList.remove("text-white"));
+        callmeForm.classList.remove("bg-dark", "text-white");
+        landmarks.forEach((card) => {
+            card.classList.remove("text-white", "darkmode"); // add the .darkmode class
+        });
+        footer.classList.add("bg-light");
     }
 }
 

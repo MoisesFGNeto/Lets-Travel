@@ -49,7 +49,7 @@ callMeForm.addEventListener('submit', function(e) {
 })
 
 function setDarkMode() {
-    let isDark = document.body.classList.toggle("bg-dark");
+    let isDark = document.body.classList.toggle("darkmode");
     let navbar = document.querySelector(".navbar");
     let adminHeader = document.querySelector(".admin-header");
     let logo = document.querySelector(".navbar-brand")

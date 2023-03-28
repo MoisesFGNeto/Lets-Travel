@@ -10,39 +10,39 @@
     <link rel="stylesheet" href="/CSS/style.css" />
   </head>
   <body>
-    <header class="mb-5 mt-2">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="/">Let's travel</a>
-          <div class="d-flex">
-            <div class="form-check form-switch ms-auto mt-1 me-5">
-              <label class="form-check-label" for="lightSwitch">
-                <i class="fa-regular fa-lightbulb"></i>
-              </label>
-              <input class="form-check-input" type="checkbox" id="lightSwitch" role="switch" onclick="setDarkMode()"/>
+    <header>
+      <div class="container full-nav-bar">
+        <nav class="nav-menu navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+            <button class="navbar-toggler btn btn-light" type="button"data-bs-toggle="collapse"data-bs-target="#navbarSupportedContent"aria-controls="navbarSupportedContent"aria-expanded="false"aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="mt-2">
+              <div class="form-check form-switch ms-auto me-3">
+                <label class="form-check-label" for="lightSwitch">
+                  <i class="fa-regular fa-lightbulb"></i>
+                </label>
+                <input class="form-check-input" type="checkbox" id="lightSwitch" role="switch" onclick="setDarkMode()"/>
+              </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mt-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link nav-link-1 btn" aria-current="page" href="/">Home</a></li>
+              </ul>
+              <form class="d-flex call-me-form" role="search">
+                <input class="form-control phone-input me-2" type="tel" placeholder="Phone number" aria-label="Phone number"/>
+                <button class="btn btn-outline-primary text-nowrap" type=""> Call me </button>
+              </form>
             </div>
           </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            </ul>
-            <form class="call-me-form d-flex">
-              <input class="form-control phone-input me-2" type="tel" placeholder="Phone number" aria-label="Phone number"/>
-              <button class="btn btn-outline-primary text-nowrap" type="submit">
-                Call me
-              </button>
-            </form>
-          </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
     <main>
       <div class="container">
         <div class="row">
           <div class="col-8 offset-2 box-body shadow-lg p-3 mb-5 bg-body rounded">
-            <h1 class="text-center">Admin Page</h1>
+            <h1 class="text-center mb-5">Admin Page</h1>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="sign-in-tab" data-bs-toggle="tab" data-bs-target="#sign-in-tab-pane" type="button" role="tab" aria-controls="sign-in-tab-pane" aria-selected="true">
@@ -60,11 +60,11 @@
                 <form class="sign-in-form text-center mt-3">
                   <div class="mb-3 mt-3">
                     <label for="sign-in-email" class="mb-1">Email address</label>
-                    <input class="form-control input-password w-50 m-auto text-center" type="email" id="sign-in-email" placeholder="Enter email"/>
+                    <input class="form-control input-password m-auto text-center" type="email" id="sign-in-email" placeholder="Enter email"/>
                   </div>
                   <div class="mb-3">
                     <label for="sign-in-password" class="mb-1">Password</label>
-                    <input class="form-control input-password w-50 m-auto text-center" type="password" id="sign-in-password" placeholder="Password"/>
+                    <input class="form-control input-password m-auto text-center" type="password" id="sign-in-password" placeholder="Password"/>
                   </div>
                   <button class="btn btn-primary">Sign in</button>
                   <hr>
@@ -75,19 +75,19 @@
                 <form class="register-form text-center">
                   <div class="mb-3 mt-3">
                     <label for="sign-in-name" class="mb-1 field-title">Name</label>
-                    <input class="form-control input-password w-50 m-auto text-center" type="text" id="sign-in-name" placeholder="Enter your name"/>
+                    <input class="form-control input-password m-auto text-center" type="text" id="sign-in-name" placeholder="Enter your name"/>
                   </div>
                   <div class="mb-3 mt-3">
                     <label for="register-email" class="mb-1 field-title">Email address</label>
-                    <input class="form-control input-password w-50 m-auto text-center" type="email" id="register-email" placeholder="Enter email"/>
+                    <input class="form-control input-password m-auto text-center" type="email" id="register-email" placeholder="Enter email"/>
                   </div>
                   <div class="mb-3">
                     <label for="register-password" class="mb-1 field-title">Choose a Password</label>
-                    <input class="form-control input-password w-50 m-auto text-center" type="password" id="register-password" placeholder="Password"/>
+                    <input class="form-control input-password m-auto text-center" type="password" id="register-password" placeholder="Password"/>
                   </div>
                   <div class="mb-3">
                     <label for="register-re-enter-password" class="mb-1 field-title">Re-enter your password</label>
-                    <input class="form-control input-password w-50 m-auto text-center" type="password" id="register-re-enter-password" placeholder="Re-enter password"/>
+                    <input class="form-control input-password m-auto text-center" type="password" id="register-re-enter-password" placeholder="Re-enter password"/>
                   </div>
                   <button class="btn btn-primary mt-3">Register</button>
                 </form>

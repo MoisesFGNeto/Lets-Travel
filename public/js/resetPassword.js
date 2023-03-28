@@ -20,7 +20,7 @@ resetForm.addEventListener('submit', function(e) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body:JSON.stringify({password, token, userId})
+        body:JSON.stringify({userId, token, password})
     }).then((resp) => resp.text()).then((data) => {
         alert(data);
         window.location.href = '/login';
@@ -54,7 +54,7 @@ callMeForm.addEventListener('submit', function(e) {
 })
 
 function setDarkMode() {
-    let isDark = document.body.classList.toggle("bg-dark");
+    let isDark = document.body.classList.toggle("darkmode");
     let navbar = document.querySelector(".navbar");
     let adminHeader = document.querySelector(".admin-header");
     let logo = document.querySelector(".navbar-brand")

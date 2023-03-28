@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><%= title %></title>
-        <link rel="stylesheet" href="/CSS/bootstrap.min.css" />
         <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
         type="text/javascript" charset="utf-8"></script>
         <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
@@ -14,59 +13,83 @@
         type="text/javascript" charset="utf-8"></script>
         <link rel="stylesheet" type="text/css"
         href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
-        <link rel="stylesheet" src="/CSS/style.css" />
-
+        <link rel="stylesheet" href="/CSS/bootstrap.min.css" />
+        <link rel="stylesheet" href="/CSS/all.min.css" />
+        <link rel="stylesheet" src="/CSS/styles.css"/>
+        <style>
+            .darkmode {
+                background-color: #212529;
+            color: white;
+            }
+            .darkmode .nav-link {
+            color: white;
+            }
+            .font-white{
+                color: white;
+            }
+        </style>
     </head>
-<body>
-    <header class="mb-5 mt-2">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="/">Let's travel</a>
-                <div class="d-flex">
-                    <div class="form-check form-switch ms-auto mt-1 me-5">
-                    <label class="form-check-label" for="lightSwitch">
-                        <i class="fa-regular fa-lightbulb"></i>
-                    </label>
-                    <input class="form-check-input" type="checkbox" id="lightSwitch" role="switch" onclick="setDarkMode()"/>
+    <body>
+        <header class="mb-1 mt-1">
+            <div class="container full-nav-bar">
+                <nav class="nav-menu navbar navbar-expand-lg bg-light">
+                    <div class="container-fluid">
+                        <div>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item btn"><a class="nav-link nav-link-1" aria-current="page" href="/">Home</a></li>
+                            </ul>
+                        </div>
+                        <div class="form-check form-switch ms-5 mt-1 me-4">
+                            <label class="form-check-label ms-1" for="lightSwitch">
+                                <i class="fa-regular fa-lightbulb"></i>
+                            </label>
+                            <input class="form-check-input" type="checkbox" id="lightSwitch" role="switch" onclick="setDarkMode()"/>
+                        </div>
                     </div>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/admin">Admin Page</a>
-                        </li>
-                    </ul>
-                    <form class="call-me-form d-flex">
-                        <input class="form-control me-2 phone-input" type="tel" placeholder="Phone number" aria-label="Phone number">
-                        <button class="btn btn-outline-primary text-nowrap" type="submit">Call me</button>
-                    </form>
-                </div>
+                </nav>
             </div>
-        </nav>
-    </header>
-    <main>
-        <div class="container box-body shadow-lg py-3 px-5 mb-5 bg-body rounded">
-            <h1 class="main-heading text-center"><%= title %></h1>
-            <hr>
-            <img class="w-100" src="<%= imageURL %>" alt="<%= title %>">
-            <hr>
-            <p class="date fw-bold"><%= date %></p>
-            <hr>
-            <p class="text"><%= text %></p>
-            <div class="map" style="height: 400px;"></div>
-        </div>
-    </main>
+        </header>  
+        <main>
+            <div class="container shadow-lg py-1 px-5 rounded">
+                <h1 class="main-heading text-center"><%= title %></h1>
+                <hr>
+                <img class="w-100" src="<%= imageURL %>" alt="<%= title %>">
+                <hr>
+                <p class="date fw-bold"><%= date %></p>
+                <hr>
+                <p class="text"><%= text %></p>
+                <div class="map" style="height: 400px;"></div>
+            </div>
+        </main>
+        <script>
+            function setDarkMode() {
+                let isDark = document.body.classList.toggle("darkmode");
+                let navbar = document.querySelector(".navbar");
+                let navLink = document.querySelector(".nav-link-1");
 
+                if (isDark) {
+                    window.localStorage.setItem("theme", "dark");
+                    document.getElementById("lightSwitch").setAttribute("checked", "checked");
+                    navbar.classList.remove("bg-light");
+                    navLink.classList.add("text-white");
+                    } 
+                else {
+                    localStorage.setItem("theme", "light");
+                    navbar.classList.add("bg-light");
+                    navLink.classList.remove("text-white");
+                }
+            }
 
+            function initializeDarkMode() {
+                const theme = localStorage.getItem("theme");
+                if (theme === "dark") {
+                    setDarkMode();
+                }
+                }
 
-    <script src="/js/maps.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/landmark.js"></script>
-</body>
+                initializeDarkMode();
+        </script>
+
+        <script src="/js/maps.js"></script>
+    </body>
 </html>

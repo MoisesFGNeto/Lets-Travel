@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="/CSS/style.css" />
   </head>
   <body>
-    <header class="mb-5 mt-2">
+    <header class="mt-2">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Let's travel</a>
-          <div class="d-flex">
-            <div class="form-check form-switch ms-5 mt-1 me-5">
+          <a class="navbar-brand btn" href="/">Let's Travel</a>
+          <div class="">
+            <div class="form-check form-switch ms-auto mt-1 me-4">
               <label class="form-check-label ms-1" for="lightSwitch">
                 <i class="fa-regular fa-lightbulb"></i>
               </label>
@@ -30,10 +30,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class=" navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link nav-menu active me-3" aria-current="page" href="/">Home</a>
-              </li>
+            <ul class=" navbar-nav me-auto mb-2 mt-2 mb-lg-0">
               <li class="nav-item">
                 <button class="log-out-btn btn btn-outline-secondary ml-1">
                   Log Out
@@ -94,23 +91,23 @@
               <form class="create-post-form">
                 <div class="mb-3">
                   <label for="title" class="mb-1">Title*</label>
-                  <input type="text" placeholder="Title" class="form-control" id="title"/>
+                  <input type="text" placeholder="Title" class="form-control post-input" id="title"/>
                 </div>
                 <div class="mb-3">
                   <label for="country" class="form-label">Country*</label>
-                  <input type="text" placeholder="Country" class="form-control" id="country"/>
+                  <input type="text" placeholder="Country" class="form-control post-input" id="country"/>
                 </div>
                 <div class="mb-3">
                   <label for="imageURL" class="mb-1">Image</label>
-                  <input type="url" placeholder="URL" class="form-control" id="imageURL"/>
+                  <input type="url" placeholder="URL" class="form-control post-input" id="imageURL"/>
                 </div>
                 <div class="mb-3">
                   <label for="image-file" class="mb-1">or</label>
-                  <input type="file" class="form-control" id="image-file" />
+                  <input type="file" class="form-control post-input" id="image-file" />
                 </div>
                 <div class="mb-3">
                   <label for="text" class="mb-1">Text*</label>
-                  <textarea class="form-control" id="text" cols="30" rows="10"></textarea>
+                  <textarea class="form-control post-input" id="text" cols="30" rows="10"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">
                   Creat post
@@ -124,11 +121,11 @@
               <form class="update-post-form">
                 <div class="mb-3">
                   <label for="update-title" class="form-label">Title</label>
-                  <input type="text" placeholder="Title" class="form-control" id="update-title"/>
+                  <input type="text" placeholder="Title" class="form-control title-update" id="update-title"/>
                 </div>
                 <div class="mb-3">
                   <label for="update-text" class="mb-1">Text</label>
-                  <textarea class="form-control" id="update-text" cols="30" rows="10"></textarea>
+                  <textarea class="form-control text-update" id="update-text" cols="30" rows="10"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">
                   Update post

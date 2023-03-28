@@ -153,6 +153,9 @@ function setDarkMode() {
     let adminBox = document.querySelector(".admin-box");
     let articles = document.querySelector('.table tbody');
     let tables = document.querySelectorAll(".table");
+    let titleUpdate = document.querySelector(".title-update");
+    let textUpdate = document.querySelector(".text-update");
+    let postInput = document.querySelectorAll(".post-input");
 
     if (isDark) {
         window.localStorage.setItem("theme", "dark");
@@ -164,17 +167,22 @@ function setDarkMode() {
         adminBox.classList.remove("bg-body");
         articles.classList.add("table-dark");
         tables.forEach((table) => table.classList.add("table-dark"));
+        titleUpdate.classList.add("darkmode");
+        textUpdate.classList.add("darkmode");
+        postInput.forEach((post) => post.classList.add("darkmode"));
         }
     else {
         localStorage.setItem("theme", "light");
         navbar.classList.add("bg-light");
-        navbar.classList.remove("font-white");
         callmeForm.classList.remove("bg-dark", "text-white");
         navMenu.forEach((menu) => menu.classList.remove("text-white"));
         logo.classList.remove("text-white");
         adminBox.classList.add("bg-body");
         articles.classList.remove("table-dark");
         tables.forEach((table) => table.classList.remove("table-dark"));
+        titleUpdate.classList.remove("darkmode");
+        textUpdate.classList.remove(".darkmode");
+        postInput.forEach((post) => post.classList.remove("darkmode"));
       }
     }
 
