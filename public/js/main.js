@@ -83,11 +83,13 @@ emailRequestForm.addEventListener('submit', function(e) {
 // Dark Mode
   
 function setDarkMode() {
-    let isDark = document.body.classList.toggle("darkmode");
+    let isDark = document.body.classList.toggle("bg-dark");
     let navbar = document.querySelector(".navbar");
     let navLink = document.querySelectorAll(".nav-link-1");
     let callmeForm = document.querySelector(".phone-input");
     let landmarks = document.querySelectorAll(".card");
+    let lightbulb = document.querySelector(".fa-lightbulb");
+    let toggleBtn = document.querySelector(".navbar-toggler-icon");
     let footer = document.querySelector(".footer");
     
     if (isDark) {
@@ -96,8 +98,10 @@ function setDarkMode() {
         navbar.classList.remove("bg-light");
         navLink.forEach((menu) => menu.classList.add("text-white"));
         callmeForm.classList.add("bg-dark", "text-white");
+        lightbulb.classList.add("text-white"),
+        toggleBtn.classList.add("text-white"),
         landmarks.forEach((card) => {
-            card.classList.add("text-white", "darkmode"); // add the .darkmode class
+            card.classList.add("text-white", "bg-dark"); // add the .darkmode class
         });
         footer.classList.remove("bg-light");
         } 
@@ -106,8 +110,10 @@ function setDarkMode() {
         navbar.classList.add("bg-light");
         navLink.forEach((menu) => menu.classList.remove("text-white"));
         callmeForm.classList.remove("bg-dark", "text-white");
+        lightbulb.classList.remove("text-white"),
+        toggleBtn.classList.remove("text-white"),
         landmarks.forEach((card) => {
-            card.classList.remove("text-white", "darkmode"); // add the .darkmode class
+            card.classList.remove("text-white", "bg-dark"); // add the .darkmode class
         });
         footer.classList.add("bg-light");
     }
