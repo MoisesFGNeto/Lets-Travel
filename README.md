@@ -1,6 +1,6 @@
 # Lets-Travel
 
- This is a personal travel blog. For this project, I focused on putting into practice the CRUD methods and the authentication and reset password process. For this project I used Bootstraap 5, Javascript, Express, MongoDB and deployed on Heroku.
+ This is a personal travel blog. For this project, I focused on putting into practice the CRUD methods and the authentication/reset password process. For this project I used Bootstraap 5, Javascript, Express, MongoDB and deployed on Heroku.
  
  
 #Check the final project
