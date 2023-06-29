@@ -1,3 +1,6 @@
+import setDarkMode from "./darkmode.js";
+import initializeDarkMode from "./initializeDarkMode.js";
+
 async function getPosts() {
     return await fetch('/posts')
         .then((response) => response.json())
@@ -23,6 +26,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         `;
         articles.insertAdjacentHTML('beforeend', postHTML);
     });
+    setDarkMode();
+    initializeDarkMode();
 });
 
 let callMeForm = document.querySelector('.call-me-form');
@@ -78,52 +83,3 @@ emailRequestForm.addEventListener('submit', function(e) {
         })
     }).then((resp) => resp.text()).then(() => alert('Your message has been sent, Thank You !'));
 })
-
-
-// Dark Mode
-  
-function setDarkMode() {
-    let isDark = document.body.classList.toggle("bg-dark");
-    let navbar = document.querySelector(".navbar");
-    let navLink = document.querySelectorAll(".nav-link-1");
-    let callmeForm = document.querySelector(".phone-input");
-    let landmarks = document.querySelectorAll(".card");
-    let lightbulb = document.querySelector(".fa-lightbulb");
-    let toggleBtn = document.querySelector(".navbar-toggler-icon");
-    let footer = document.querySelector(".footer");
-    
-    if (isDark) {
-        window.localStorage.setItem("theme", "dark");
-        document.getElementById("lightSwitch").setAttribute("checked", "checked");
-        navbar.classList.remove("bg-light");
-        navLink.forEach((menu) => menu.classList.add("text-white"));
-        callmeForm.classList.add("bg-dark", "text-white");
-        lightbulb.classList.add("text-white"),
-        toggleBtn.classList.add("text-white"),
-        landmarks.forEach((card) => {
-            card.classList.add("text-white", "bg-dark"); // add the .darkmode class
-        });
-        footer.classList.remove("bg-light");
-        } 
-    else {
-        localStorage.setItem("theme", "light");
-        navbar.classList.add("bg-light");
-        navLink.forEach((menu) => menu.classList.remove("text-white"));
-        callmeForm.classList.remove("bg-dark", "text-white");
-        lightbulb.classList.remove("text-white"),
-        toggleBtn.classList.remove("text-white"),
-        landmarks.forEach((card) => {
-            card.classList.remove("text-white", "bg-dark"); // add the .darkmode class
-        });
-        footer.classList.add("bg-light");
-    }
-}
-
-function initializeDarkMode() {
-  const theme = localStorage.getItem("theme");
-  if (theme === "dark") {
-    setDarkMode();
-  }
-}
-
-initializeDarkMode();
