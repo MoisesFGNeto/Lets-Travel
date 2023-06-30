@@ -1,5 +1,4 @@
 import setDarkMode from "./darkmode.js";
-import initializeDarkMode from "./initializeDarkMode.js";
 
 async function getPosts() {
     return await fetch('/posts')
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         articles.insertAdjacentHTML('beforeend', postHTML);
     });
     setDarkMode();
-    initializeDarkMode();
 });
 
 let callMeForm = document.querySelector('.call-me-form');

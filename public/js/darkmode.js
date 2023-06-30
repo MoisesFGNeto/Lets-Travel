@@ -1,5 +1,4 @@
-let checkBoxDarkMode = document.querySelector('input[type=checkbox]');
-console.log(checkBoxDarkMode);
+let checkBoxDarkMode = document.getElementById('lightSwitch');
 
 checkBoxDarkMode.addEventListener('change', setDarkMode);
 
@@ -31,7 +30,7 @@ export default function setDarkMode() {
       lightbulb.classList.add("text-white"),
       toggleBtn.classList.add("text-white"),
       landmarks.forEach((card) => {
-          card.classList.add("text-white", "bg-dark"); // add the .darkmode class
+          card.classList.add("text-white", "bg-dark"); 
       });
       footer.classList.remove("bg-light");
       } 
@@ -44,7 +43,7 @@ export default function setDarkMode() {
       lightbulb.classList.remove("text-white"),
       toggleBtn.classList.remove("text-white"),
       landmarks.forEach((card) => {
-          card.classList.remove("text-white", "bg-dark"); // add the .darkmode class
+          card.classList.remove("text-white", "bg-dark"); 
       });
       footer.classList.add("bg-light");
   }
