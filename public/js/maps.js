@@ -1,6 +1,6 @@
 var platform = new H.service.Platform({
-    'apikey': 'mXuSQhjf0JrkbwFfH0wHruOzp9S5OLRLDFI9Bhsglw0'
-  });
+  'apikey': 'mXuSQhjf0JrkbwFfH0wHruOzp9S5OLRLDFI9Bhsglw0'
+});
   
 // Obtain the default map types from the platform object:
 var defaultLayers = platform.createDefaultLayers();
