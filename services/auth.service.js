@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 
 const bcryptSalt = process.env.BCRYPT_SALT;
-const clientURL = "https://deba-lets-travel.herokuapp.com";
+const clientURL = "lets-travel-experience.vercel.app";
 
 const requestPasswordReset = async (email) => {
   const user = await User.findOne({ email });
