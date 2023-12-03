@@ -8,24 +8,28 @@
   ],
   "routes": [
     {
-      "src": "/posts/(.*)",
-      "dest": "/posts/$1"
+      "src": "/landmark",
+      "dest": "/app.js"
     },
     {
-      "src": "/callback-requests/(.*)",
-      "dest": "/callback-requests/$1"
+      "src": "/admin",
+      "dest": "/app.js"
     },
     {
-      "src": "/emails/(.*)",
-      "dest": "/emails/$1"
+      "src": "/login",
+      "dest": "/app.js"
     },
     {
-      "src": "/users/(.*)",
-      "dest": "/users/$1"
+      "src": "/requestPasswordReset",
+      "dest": "/app.js"
+    },
+    {
+      "src": "/resetPassword",
+      "dest": "/app.js"
     },
     {
       "src": "/(.*)",
-      "dest": "app.js"
+      "dest": "/app.js"
     }
   ]
 }
