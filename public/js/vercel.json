@@ -9,23 +9,23 @@
   "routes": [
     {
       "src": "/landmark",
-      "dest": "/app.js"
+      "dest": "/views/landmark.ejs"
     },
     {
       "src": "/admin",
-      "dest": "/app.js"
+      "dest": "/views/admin.ejs"
     },
     {
       "src": "/login",
-      "dest": "/app.js"
+      "dest": "/views/login.ejs"
     },
     {
       "src": "/requestPasswordReset",
-      "dest": "/app.js"
+      "dest": "/views/requestPasswordReset.ejs"
     },
     {
       "src": "/resetPassword",
-      "dest": "/app.js"
+      "dest": "/views/resetPassword.ejs"
     },
     {
       "src": "/(.*)",
