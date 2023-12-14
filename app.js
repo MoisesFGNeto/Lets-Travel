@@ -27,7 +27,6 @@ app.use('/posts', postRouter);
 app.use('/callback-requests', callbackRequestsRouter);
 app.use('/emails' , emailRouter);
 app.use('/users', userRouter);
-app.use('/api/v1', require('./api/index'));
 
 app.get('/landmark', async(req, resp) => {
     let id = req.query.id;
