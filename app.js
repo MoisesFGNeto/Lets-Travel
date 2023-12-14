@@ -4,7 +4,6 @@ let mongoose = require('mongoose');
 require("dotenv").config();
 let multer = require('multer');
 let cookieParser = require('cookie-parser');
-let serverless = require('serverless-http');
 let callbackRequestsRouter = require('./routes/callback-requests.route');
 let postRouter = require('./routes/posts.route');
 let emailRouter = require('./routes/emails.route');
@@ -73,7 +72,5 @@ app.get('/resetPassword', (req, res) => {
   });
 
 
-// let port = process.env.PORT || 3000;
-// app.listen(port, () => console.log(`Listening ${port}...`));
-
-module.exports = serverless(app);
+let port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening ${port}...`));
