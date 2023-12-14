@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "tsc"
-  
+    "vercel-build": "echo hello"
+
   },
   "author": "",
   "license": "ISC",
