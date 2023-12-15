@@ -10,7 +10,10 @@ let emailRouter = require('./routes/emails.route');
 let userRouter = require('./routes/users.route');
 let Post = require('./models/post.model').Post;
 let auth = require('./controllers/auth');
+const path = require('path');
+
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 mongoose.connect(process.env.DB,{useNewUrlParser: true, useUnifiedTopology: true});
 app.use(express.json());
