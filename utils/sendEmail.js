@@ -27,9 +27,10 @@ const sendEmail = async (email, subject, payload, template) => {
         html: compiledTemplate(payload),
       };
     };
-
+    console.log("Sending email...", email)
     // Send email
     await transporter.sendMail(options());
+    console.log("Email sent!", email)
     return true; // return a boolean value to indicate that the email was sent successfully
     } catch (error) {
     console.log(error); // log the error for debugging purposes
