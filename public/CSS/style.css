@@ -21,6 +21,17 @@
   color: #0d6efd;
 }
 
+.container-login {
+  margin-top: 80px;
+}
+
+.requestPassword-form {
+  margin-top: 80px;
+}
+
+.reset-password-div{
+  margin-top: 80px;
+}
 /* For xs and sm screens */
 @media screen and (max-width: 767.98px) {
   .input-password {
@@ -28,6 +39,21 @@
   }
   .nav-toggler-icon{
     color: grey;
+  }
+  .login-form {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .requestPassword-form{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .reset-password-div{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
