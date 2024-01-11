@@ -28,19 +28,21 @@ document.addEventListener('DOMContentLoaded', async function() {
     setDarkMode();
 });
 
-let callMeForm = document.querySelector('.call-me-form');
-
-callMeForm.addEventListener('submit', function(e) {
+  const callMeForm = document.querySelector('.call-me-form');
+  function handleSubmit(e) {
     e.preventDefault();
-    let phoneInput = callMeForm.querySelector('input');
+    const phoneInput = callMeForm.querySelector('input');
+
     if (phoneInput.value.trim() === '') {
         alert('Please enter a phone number.');
         return;
     }
+
     if (isNaN(phoneInput.value)) {
         alert('Please enter only numbers for the phone number.');
         return;
     }
+
     fetch('/callback-requests', {
         method: 'POST',
         headers: {
@@ -53,7 +55,8 @@ callMeForm.addEventListener('submit', function(e) {
         alert('We will call you back as soon as possible!');
         location.reload();
     });
-})
+}
+callMeForm.addEventListener('submit', handleSubmit);
 
 let emailRequestForm = document.querySelector('.email-request-form');
 
